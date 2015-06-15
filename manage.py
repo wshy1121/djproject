@@ -3,6 +3,7 @@ import os
 import sys
 
 sys.path.append('/usr/lib/python2.6/site-packages')
+sys.path.append('/usr/lib/python2.6/site-packages/django/db/backends/sqlite3')
 
 print sys.path
 
