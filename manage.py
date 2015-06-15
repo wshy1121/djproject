@@ -2,6 +2,10 @@
 import os
 import sys
 
+sys.path.append('/usr/lib/python2.6/site-packages')
+
+print sys.path
+
 if __name__ == "__main__":
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "djproject.settings")
 
