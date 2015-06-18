@@ -6,3 +6,6 @@ from django.http import HttpResponse
 def hello(req):
 	return HttpResponse("<h1>Hello World!</h1>")
 
+def homepage(req):
+	return HttpResponse("<h1>this is homepage!</h1>")
+
