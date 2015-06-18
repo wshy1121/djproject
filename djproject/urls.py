@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, include, url
 
 from django.contrib import admin
-from jobs.views import hello, homepage
+from jobs.views import hello, homepage, ctime
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -12,6 +12,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^hello/$', hello),
     url(r'^$', homepage),
+    url(r'^ctime/$', ctime),
 )
 
 
