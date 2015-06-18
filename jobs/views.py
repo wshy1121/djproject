@@ -28,4 +28,40 @@ def ctime(req, num):
 
 	return HttpResponse(txt) 
 
-	
+
+def template(req):
+	#模板的简单使用
+	tempText = 	"""
+			<html>  
+			<head><title>Ordering notice</title></head>  
+			<body>  
+			<p>Dear {{ person_name }},</p>  
+			<p>Thanks for placing an order {{ product }} from {{ company }}. It's scheduled to  
+			ship on {{ ship_date|date:"F j, Y" }}.</p>  
+			<p>Here are the items you've ordered:</p>  
+			<ul>  
+			{% for item in item_list %}  
+			<li>{{ item }}</li>  
+			{% endfor %}  
+			</ul>  
+			{% if ordered_warranty %}  
+			<p>Your warranty information will be included in the packaging.</p>  
+			{% endif %}  
+			<p>Sincerely,<br />{{ company }}</p>  
+			</body>  
+			</html>  
+			"""
+	t = Template(tempText)
+
+	c = Context({'person_name': 'John Smith',  
+	     'product': 'Super Lawn Mower',  
+	     'company': 'Outdoor Equipment',  
+	     'ship_date': datetime.date(2009, 4, 2),  
+	     'item_list': ["111", "222"],
+	     'ordered_warranty': True
+	     })  
+
+	return HttpResponse(t.render(c))
+
+
+
