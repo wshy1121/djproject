@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, include, url
 
 from django.contrib import admin
-from jobs.views import hello, homepage, ctime, template
+from jobs.views import hello, homepage, ctime, template, current_datetime
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -14,6 +14,7 @@ urlpatterns = patterns('',
     url(r'^$', homepage),
     url(r'^ctime/(\d{1,2})/$', ctime),
     url(r'^template/$', template),
+    url(r'^current_datetime/$', current_datetime),
 )
 
 

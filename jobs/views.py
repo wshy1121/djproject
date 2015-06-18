@@ -1,3 +1,5 @@
+# -*- coding: UTF-8 -*- 
+
 from django.shortcuts import render
 
 # Create your views here.
@@ -65,3 +67,14 @@ def template(req):
 
 
 
+def current_datetime(req):
+	now = datetime.datetime.now()
+
+	fp = open("templates/mytemplate.html")
+	t=Template(fp.read())
+	fp.close()
+
+	c = Context({"current_date":now})
+
+	html = t.render(c)
+	return HttpResponse(html)
