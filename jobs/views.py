@@ -10,9 +10,18 @@ def hello(req):
 def homepage(req):
 	return HttpResponse("<h1>this is homepage!</h1>")
 
-def ctime(req):
+def ctime(req, num):
+	try:
+		num=int(num)
+		num=str(num)
+	except ValueError:
+		raise Http404
+
 	cutime = datetime.datetime.now()
 	txt = "it is %s" % cutime
+
+	print num
+
 	return HttpResponse(txt) 
 
 	

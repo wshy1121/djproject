@@ -12,7 +12,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^hello/$', hello),
     url(r'^$', homepage),
-    url(r'^ctime/$', ctime),
+    url(r'^ctime/(\d{1,2})/$', ctime),
 )
 
 
