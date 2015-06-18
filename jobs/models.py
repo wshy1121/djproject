@@ -5,9 +5,9 @@ from django.db import models
 from django.db import models
 
 class Location(models.Model):
-    city = models.CharField(maxlength=50)
-    state = models.CharField(maxlength=50, null=True, blank=True)
-    country = models.CharField(maxlength=50)
+    city = models.CharField(max_length=50)
+    state = models.CharField(max_length=50, null=True, blank=True)
+    country = models.CharField(max_length=50)
 
     def __str__(self):
         if self.state:
@@ -17,10 +17,9 @@ class Location(models.Model):
 
 class Job(models.Model):
     pub_date = models.DateField()
-    job_title = models.CharField(maxlength=50)
+    job_title = models.CharField(max_length=50)
     job_description = models.TextField()
     location = models.ForeignKey(Location)
 
     def __str__(self):
         return "%s (%s)" % (self.job_title, self.location)
-        
