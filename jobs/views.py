@@ -1,7 +1,7 @@
 # -*- coding: UTF-8 -*- 
 
 from django.shortcuts import render
-
+from django.template.loader import get_template
 # Create your views here.
 from django.http import HttpResponse
 from django.template import Template, Context
@@ -70,9 +70,7 @@ def template(req):
 def current_datetime(req):
 	now = datetime.datetime.now()
 
-	fp = open("templates/mytemplate.html")
-	t=Template(fp.read())
-	fp.close()
+	t = get_template('mytemplate.html')
 
 	c = Context({"current_date":now})
 
