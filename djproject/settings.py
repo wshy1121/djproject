@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'jobs',
+    'books',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -66,7 +67,7 @@ WSGI_APPLICATION = 'djproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'books.sqlite3'),
     }
 }
 
