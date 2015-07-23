@@ -81,3 +81,5 @@ def current_datetime1(req):
 	from django.shortcuts import render_to_response
 	now = datetime.datetime.now()
 	return render_to_response('current_datetime.html', {'current_date': now})
+
+	
