@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.db.models import Q
 from django.shortcuts import render_to_response
 from models import Book
+from forms import ContactForm
+from django.template import RequestContext
 
 # Create your views here.
 
@@ -22,4 +24,8 @@ def search(request):
 	"results": results,
 	"query": query
 	})
+
+def contact(request):
+	form = ContactForm()
+	return render_to_response('contact.html', {'form': form}, context_instance=RequestContext(request))
 
