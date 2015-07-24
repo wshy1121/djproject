@@ -16,6 +16,7 @@ urlpatterns = patterns('',
     url(r'^template/$', template),
     url(r'^current_datetime/$', current_datetime),
     url(r'^current_datetime1/$', current_datetime1),
+    url(r'^admin/', include(admin.site.urls)),
 )
 
 
