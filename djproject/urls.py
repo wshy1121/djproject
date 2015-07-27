@@ -1,5 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
+from django.conf import settings
 
 admin.autodiscover()
 
@@ -9,7 +10,6 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', homepage),
 )
 
 urlpatterns += patterns('books.views',
@@ -27,3 +27,9 @@ urlpatterns += patterns('jobs.views',
     url(r'^current_datetime1/$', 'current_datetime1'),
 
 )
+
+if settings.DEBUG:
+	urlpatterns += patterns('jobs.views',
+		url(r'^$', 'homepage'),
+	)
+
