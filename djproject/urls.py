@@ -1,6 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.conf import settings
+from django.views.generic import TemplateView
 
 admin.autodiscover()
 
@@ -20,12 +21,15 @@ urlpatterns += patterns('books.views',
 
 urlpatterns += patterns('jobs.views',
     url(r'^hello/$', 'hello'),
-    
     url(r'^ctime/(\d{1,2})/$', 'ctime'),
     url(r'^template/$', 'template'),
     url(r'^current_datetime/$', 'current_datetime'),
     url(r'^current_datetime1/$', 'current_datetime1'),
 
+)
+
+urlpatterns += patterns('jobs.views',
+	url(r'^about/$', TemplateView.as_view(template_name='base.html'))
 )
 
 if settings.DEBUG:
