@@ -2,7 +2,7 @@ from django.conf.urls import patterns, include, url
 
 from django.contrib import admin
 from jobs.views import hello, homepage, ctime, template, current_datetime, current_datetime1
-from books.views import search, contact
+from books.views import search, contact, add_publisher
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -20,6 +20,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^search/$', search),
     url(r'^contact/$', contact),
+    url(r'^add_publisher/$', add_publisher),
 )
 
 

@@ -2,11 +2,12 @@ from django.shortcuts import render
 from django.db.models import Q
 from django.shortcuts import render_to_response
 from models import Book
-from forms import ContactForm
 from django.template import RequestContext
 from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
 
+from forms import ContactForm
+from forms import PublisherForm
 # Create your views here.
 
 def search(request):
@@ -41,5 +42,17 @@ def contact(request):
 			return HttpResponseRedirect('/contact/thanks/')
 	else:
 		form = ContactForm()
+	return render_to_response('contact.html', {'form': form}, context_instance=RequestContext(request))
+
+
+
+def add_publisher(request):
+	if request.method == 'POST':
+		form = PublisherForm(request.POST)
+		if form.is_valid():
+			form.save()
+			return HttpResponseRedirect('/add_publisher/thanks/')
+	else:
+		form = PublisherForm()
 	return render_to_response('contact.html', {'form': form}, context_instance=RequestContext(request))
 

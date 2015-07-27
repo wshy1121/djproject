@@ -1,4 +1,6 @@
 from django import forms
+from models import Publisher
+
 
 TOPIC_CHOICES = (
 	('general', 'General enquiry'),
@@ -17,4 +19,11 @@ class ContactForm(forms.Form):
 		if num_words < 4:
 			raise forms.ValidationError("Not enough words!")
 		return message
+
+
+from django.forms import ModelForm 
+class PublisherForm(ModelForm):  
+    class Meta:  
+        model = Publisher  
+        fields = '__all__'  
 
