@@ -4,6 +4,8 @@ from django.shortcuts import render_to_response
 from models import Book
 from forms import ContactForm
 from django.template import RequestContext
+from django.core.mail import send_mail
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 
@@ -26,6 +28,18 @@ def search(request):
 	})
 
 def contact(request):
-	form = ContactForm()
+	if request.method == 'POST':
+		form = ContactForm(request.POST)
+		if form.is_valid():
+			topic = form.cleaned_data['topic']
+			message = form.cleaned_data['message']
+			sender = form.cleaned_data.get('sender', 'noreply@example.com')
+			send_mail(
+				'Feedback from your site, topic: %s' % topic, message, sender,
+				['huangyuan1@hikvision.com.cn']
+			)
+			return HttpResponseRedirect('/contact/thanks/')
+	else:
+		form = ContactForm()
 	return render_to_response('contact.html', {'form': form}, context_instance=RequestContext(request))
 
