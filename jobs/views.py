@@ -1,11 +1,13 @@
 # -*- coding: UTF-8 -*- 
-
+import datetime
 from django.shortcuts import render
 from django.template.loader import get_template
 # Create your views here.
 from django.http import HttpResponse
 from django.template import Template, Context
-import datetime
+from django.template import TemplateDoesNotExist
+from django.views.generic import TemplateView
+from django.http import Http404
 
 def hello(req):
 	t = Template("<h1>Hello World! My name is {{my_name}}.</h1>") 
@@ -82,4 +84,10 @@ def current_datetime1(req):
 	now = datetime.datetime.now()
 	return render_to_response('current_datetime.html', {'current_date': now})
 
-	
+
+
+def about_pages(request, page):
+	try:
+		return TemplateView.as_view(template_name='base.html')
+	except TemplateDoesNotExist:
+		raise Http404()

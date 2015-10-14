@@ -29,7 +29,8 @@ urlpatterns += patterns('jobs.views',
 )
 
 urlpatterns += patterns('jobs.views',
-	url(r'^about/$', TemplateView.as_view(template_name='base.html'))
+	url(r'^about/$', TemplateView.as_view(template_name='base.html')),
+	url(r'^about/(\w+)/$', 'about_pages'),
 )
 
 if settings.DEBUG:
