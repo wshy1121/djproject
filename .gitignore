@@ -1,2 +1,12 @@
 *.pyc
 *.WK3
+*.IAB
+*.IAD
+*.IMB
+*.IMD
+*.PFI
+*.PO
+*.PR
+*.PRI
+*.PS
+*.SearchResults
