@@ -20,7 +20,7 @@ urlpatterns += patterns('books.views',
 )
 
 urlpatterns += patterns('jobs.views',
-    url(r'^hello/$', 'hello'),
+    url(r'^hello/$', 'hello', {'template_name': 'template1.html'}),
     url(r'^ctime/(\d{1,2})/$', 'ctime'),
     url(r'^template/$', 'template'),
     url(r'^current_datetime/$', 'current_datetime'),

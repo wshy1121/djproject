@@ -9,9 +9,9 @@ from django.template import TemplateDoesNotExist
 from django.views.generic import TemplateView
 from django.http import Http404
 
-def hello(req):
+def hello(req, template_name):
 	t = Template("<h1>Hello World! My name is {{my_name}}.</h1>") 
-	c = Context({"my_name": "Stephane"})  
+	c = Context({"my_name": template_name})  
 	
 	return HttpResponse(t.render(c))
 
