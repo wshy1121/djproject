@@ -7,4 +7,10 @@ class Person(models.Model):
     age = models.IntegerField()
     def __unicode__(self):
         return self.name
-        
+			
+    def my_property(self):
+        return self.name + ' ' + ' is a person'
+    my_property.short_description = "Full name of the person"
+    
+    full_name = property(my_property)    
+
