@@ -2,6 +2,7 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.conf import settings
 from django.views.generic import TemplateView
+from django.views.generic.base import RedirectView
 
 admin.autodiscover()
 
@@ -35,6 +36,7 @@ urlpatterns += patterns('jobs.views',
 	url(r'^about/(\w+)/$', 'about_pages'),
 	url(r'^mine/$', MyView.as_view(), name='my-view'),
 	url(r'^$', HomePageView.as_view(), name='home'),
+	url(r'^baidu/$', RedirectView.as_view(url='http://baidu.com'), name='go-to-baidu'),
 )
 
 if settings.DEBUG:
