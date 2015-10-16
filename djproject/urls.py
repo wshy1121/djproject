@@ -29,10 +29,12 @@ urlpatterns += patterns('jobs.views',
 )
 
 from jobs.views import MyView
+from jobs.views import HomePageView
 urlpatterns += patterns('jobs.views',
 	url(r'^about/$', TemplateView.as_view(template_name='base.html')),
 	url(r'^about/(\w+)/$', 'about_pages'),
 	url(r'^mine/$', MyView.as_view(), name='my-view'),
+	url(r'^$', HomePageView.as_view(), name='home'),
 )
 
 if settings.DEBUG:

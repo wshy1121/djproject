@@ -7,6 +7,7 @@ from django.http import HttpResponse
 from django.template import Template, Context
 from django.template import TemplateDoesNotExist
 from django.views.generic import TemplateView
+from django.views.generic import View
 from django.http import Http404
 
 def hello(req, template_name):
@@ -92,10 +93,16 @@ def about_pages(request, page):
 	except TemplateDoesNotExist:
 		raise Http404()
 
-
-from django.http import HttpResponse
-from django.views.generic import View
-
 class MyView(View):
     def get(self, request, *args, **kwargs):
         return HttpResponse('Hello, World!')
+
+
+class HomePageView(TemplateView):
+    template_name = "base.html"
+    print(template_name)
+    def get_context_data(self, **kwargs):
+        context = super(HomePageView, self).get_context_data(**kwargs)
+        context['latest_articles'] = 'wshy1121'
+        return context
+        
