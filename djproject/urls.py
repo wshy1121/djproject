@@ -28,9 +28,11 @@ urlpatterns += patterns('jobs.views',
 
 )
 
+from jobs.views import MyView
 urlpatterns += patterns('jobs.views',
 	url(r'^about/$', TemplateView.as_view(template_name='base.html')),
 	url(r'^about/(\w+)/$', 'about_pages'),
+	url(r'^mine/$', MyView.as_view(), name='my-view'),
 )
 
 if settings.DEBUG:

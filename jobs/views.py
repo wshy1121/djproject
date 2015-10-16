@@ -91,3 +91,11 @@ def about_pages(request, page):
 		return TemplateView.as_view(template_name='base.html')
 	except TemplateDoesNotExist:
 		raise Http404()
+
+
+from django.http import HttpResponse
+from django.views.generic import View
+
+class MyView(View):
+    def get(self, request, *args, **kwargs):
+        return HttpResponse('Hello, World!')
