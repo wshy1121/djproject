@@ -5,6 +5,8 @@ from .models import Article
 
 class ArticleAdmin(admin.ModelAdmin):
     list_display = ('title','pub_date','update_time',)
+    search_fields = ('title', 'content',)
+    list_filter = ('title',)
 
 
 admin.site.register(Article, ArticleAdmin)
